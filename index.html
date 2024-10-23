@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UJHS 영단어</title>
+    <style>
+        .checkbox-container {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>영단어 예문 test</h1>
+    <form action="/quiz" method="POST">
+        <h2>퀴즈 날짜 선택 (31-60)</h2>
+        <div class="checkbox-container">
+            {% for day in range(31, 61) %}
+                <label>
+                    <input type="checkbox" name="days" value="{{ day }}"> {{ day }}
+                </label>
+            {% endfor %}
+        </div>
+        <br>
+        <button type="button" onclick="selectAll()">Select All</button>
+        <button type="button" onclick="deselectAll()">Deselect All</button>
+        <br><br>
+        <input type="submit" value="Next">
+    </form>
+
+    <script>
+        function selectAll() {
+            const checkboxes = document.querySelectorAll('input[name="days"]');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = true;
+            });
+        }
+
+        function deselectAll() {
+            const checkboxes = document.querySelectorAll('input[name="days"]');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+        }
+    </script>
+</body>
+</html>
